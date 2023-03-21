@@ -2,15 +2,6 @@
   <head>
     <title>jump-to-website</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-  </head>
-  <body>
-    <label>
-      Choose a website and then add this page to your home screen:
-
-      <select>
-        <option value="">Choose a website:</option>
-      </select>
-    </label>
 
     <script>
       const redirectParam = "target";
@@ -27,7 +18,7 @@
         }
       }
 
-      {
+      document.addEventListener("DOMContentLoaded", () => {
         const select = document.querySelector("select");
         allowList.forEach((url) => {
           const option = document.createElement("option");
@@ -41,7 +32,16 @@
           url.searchParams.set(redirectParam, event.target.value);
           history.replaceState({}, null, url);
         });
-      }
+      });
     </script>
+  </head>
+  <body>
+    <label>
+      Choose a website and then add this page to your home screen:
+
+      <select>
+        <option value="">Choose a website:</option>
+      </select>
+    </label>
   </body>
 </html>
